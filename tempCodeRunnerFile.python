@@ -1,0 +1,42 @@
+import chess
+import chess.engine
+
+def print_board(board):
+    print(board)
+    
+    
+
+def main()
+#initialize the board 
+board  = chess.Board()
+
+#initialize the stockfish engine (optional for analysis)
+ # Make sure to provide the correct path to the stockfish executable
+    # engine = chess.engine.SimpleEngine.popen_uci("/path/to/stockfish")
+    
+    while not board.is_game_over():
+        print_board(board)
+        print("Legal moves:", ", ".join([str(move) for move in board.legal_moves]))
+
+        # Get the move from the player
+        move_uci = input("Enter your move (in UCI format, e.g., 'e2e4'): ")
+
+        try:
+            move = chess.Move.from_uci(move_uci)
+            if move in board.legal_moves:
+                board.push(move)
+            else:
+                print("Illegal move, try again.")
+        except ValueError:
+            print("Invalid move format, try again.")
+
+    print_board(board)
+    print("Game over!")
+    print("Result:", board.result())
+
+    # Close the engine if used
+    # engine.quit()
+
+if __name__ == "__main__":
+    main()
+
