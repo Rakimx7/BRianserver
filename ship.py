@@ -10,10 +10,10 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Shooter!")
 
 # Colors
-WHITE = (255, 255, 255)
+GRAY = (120, 120, 120)
+GREEN = (60, 179, 113)
+BLACK = (60, 60, 60)
 RED = (255, 0, 0)
-BLUE = (0, 0, 255)
-YELLOW = (255, 255, 0)
 
 # Player settings
 player_size = 50
@@ -22,14 +22,14 @@ player_y = HEIGHT - player_size - 10
 player_speed = 5
 
 # Enemy settings
-enemy_size = 50
-enemy_speed = 3
+enemy_size = 60
+enemy_speed = 7
 enemies = []
 
 # Bullet settings
-bullet_width, bullet_height = 5, 10
+bullet_width, bullet_height = 10, 15
 bullets = []
-bullet_speed = 7
+bullet_speed = 9 
 
 # Game variables
 running = True
@@ -78,7 +78,7 @@ def check_collision(player_rect):
 enemies.append(create_enemy())
 
 while running:
-    screen.fill(WHITE)
+    screen.fill(GRAY)
     
     # Event handling
     for event in pygame.event.get():
@@ -105,11 +105,11 @@ while running:
         running = False
     
     # Draw player, enemies, and bullets
-    pygame.draw.rect(screen, BLUE, player_rect)
+    pygame.draw.rect(screen, BLACK, player_rect)
     for enemy in enemies:
-        pygame.draw.rect(screen, RED, enemy)
+        pygame.draw.rect(screen, GREEN, enemy)
     for bullet in bullets:
-        pygame.draw.rect(screen, YELLOW, bullet)
+        pygame.draw.rect(screen, RED, bullet)
     
     # Display score
     score_text = font.render(f"Score: {score}", True, (0, 0, 0))
