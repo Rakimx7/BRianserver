@@ -1,3 +1,5 @@
+#This is my python game made by me
+
 import pygame
 import random
 
